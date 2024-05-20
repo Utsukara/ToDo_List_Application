@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Parker - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <input type="checkbox" id="toggle-sidebar" class="toggle-sidebar">
+    <label for="toggle-sidebar" class="toggle-tab"></label>
+
+    <div id="sidebar" class="sidebar">
+        <label for="toggle-sidebar" class="close-tab"></label>
+        <a href="index.html">Home</a>
+        <a href="cv.html">Resumé</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact Info</a>
+    </div>
+
+    <div id="main-content" class="main-content">
+        <img src="profile.jpg" alt="Profile Picture" id="profile-pic">
+        <h1>Welcome to My Professional Portfolio</h1>
+        <p>
+            I am James Parker, a dedicated Master's student in Cybersecurity at DePaul University, with a solid academic foundation in Neuroscience from the University of Chicago Illinois. My academic journey has equipped me with comprehensive knowledge in systems, data structures, and information security management, which I have further enhanced through extensive practical experiences.
+        </p>
+        <p>
+            I have always been fascinated by technology, and recognizing its increasing importance in our world, I decided to pursue my passion and transition into the field of cybersecurity. My roles as an ER Technician at Gottlieb Memorial Hospital and a Research Assistant at UIC Language Lab have sharpened my skills in data analysis, critical thinking, and problem-solving, all of which are pivotal in cybersecurity.
+        </p>
+        <p>
+            This portfolio is a testament to my journey and achievements. I invite you to explore my skills, experiences, and projects, and to consider how we might collaborate in the future.
+        </p>
+        
+    </div>
+    
+    <footer>
+        <p>Chicago, IL</p>
+        <p><a href="https://www.linkedin.com/in/jsparker-ms">LinkedIn</a></p>
+        <p>James Parker</p>
+        <p><a href="mailto:jsparker.ms@gmail.com">jsparker.ms@gmail.com</a></p>
+        <p>(Phone Number)</p>
+    </footer>
+
+    <audio id="hover-sound" src="music.mp3"></audio> <!-- Add your music file here -->
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            
+            sidebar.classList.toggle('hidden');
+            mainContent.classList.toggle('expanded');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const profilePic = document.getElementById('profile-pic');
+            const hoverSound = document.getElementById('hover-sound');
+            let isPlaying = false;
+
+            profilePic.addEventListener('click', () => {
+                if (isPlaying) {
+                    hoverSound.pause();
+                    hoverSound.currentTime = 0;
+                    isPlaying = false;
+                    profilePic.classList.remove('spinning');
+                } else {
+                    hoverSound.play().then(() => {
+                        isPlaying = true;
+                        profilePic.classList.add('spinning');
+                    }).catch((error) => {
+                        console.error('Failed to play music', error);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    margin: 0;
+    background-color: rgb(40, 51, 49);
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Added text shadow for depth */
+}
+
+.toggle-sidebar {
+    display: none;
+}
+
+.toggle-tab, .close-tab {
+    position: fixed;
+    top: 20px;
+    left: 200px; /* Just outside the sidebar */
+    width: 10px; /* Thickness of the tab */
+    height: 42px; /* Length of the tab */
+    background-color: rgb(20, 31, 29);
+    cursor: pointer;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 1000;
+    transition: left 0.3s;
+}
+
+.toggle-sidebar:checked ~ .toggle-tab {
+    left: 0;
+}
+
+.sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(20, 31, 29);
+    padding-top: 20px;
+    transition: width 0.3s;
+    z-index: 1; /* Ensure sidebar is behind the footer */
+    box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2); /* Added box-shadow for depth */
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: rgb(122, 84, 180);
+    display: block;
+    transition: background 0.3s;
+}
+
+.sidebar a:hover {
+    animation: radialToYellow 0.25s forwards;
+}
+
+@keyframes radialToYellow {
+    0% {
+        background: radial-gradient(circle, rgb(234, 142, 6), rgb(20, 31, 29));
+    }
+    100% {
+        background: rgb(234, 142, 6);
+    }
+}
+
+.toggle-sidebar:checked ~ .sidebar {
+    width: 0;
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.toggle-sidebar:checked ~ .sidebar a, 
+.toggle-sidebar:checked ~ .sidebar .close-tab {
+    display: none;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 16px;
+    transition: margin-left 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box-shadow for depth */
+}
+
+.toggle-sidebar:checked ~ .main-content {
+    margin-left: 0;
+}
+
+.toggle-sidebar:not(:checked) ~ .toggle-tab {
+    display: block;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+footer {
+    background-color: rgb(20, 31, 29);
+    color: rgb(122, 84, 180);
+    font-size: large;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2; /* Ensure footer is above the sidebar */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Added box-shadow for depth */
+}
+
+img {
+    width: 200px;
+    height: auto;
+    border: 3px solid rgb(20, 31, 29);
+    border-radius: 200px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added box-shadow for depth */
+    transition: transform 0.5s; /* Added transition for smooth spin */
+}
+
+img.spinning {
+    animation: spin 10s infinite linear reverse; /* Continuous spinning effect */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+a:visited {
+    color: rgb(122, 84, 180);
+}
+
+a:hover {
+    color: rgb(234, 142, 6);
+}
+
+h1 {
+    color: rgb(234, 142, 6);
+    font-size: 60px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Added text shadow for depth */
+}
+
+h2 {
+    color: rgb(122, 84, 180);
+    font-size: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Added text shadow for depth */
+}
+
+h3 {
+    color: rgb(122, 84, 180);
+    font-size: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Added text shadow for depth */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 150px;
+    }
+
+    .toggle-tab, .close-tab {
+        left: 150px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    img {
+        width: 150px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 35px;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    .sidebar a {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+
+    footer {
+        font-size: medium;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 120px;
+    }
+
+    .toggle-tab, .close-tab {
+        left: 120px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 8px;
+    }
+
+    img {
+        width: 120px;
+        margin: 5px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .sidebar a {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    footer {
+        font-size: small;
+    }
+}
