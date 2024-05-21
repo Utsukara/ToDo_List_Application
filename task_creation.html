@@ -2,11 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ToDoIt Create Task</title>
+    <title>ToDoIt Task Creation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
+    <style>
+        body {
+            background: linear-gradient(to top, #ff7e5f, #feb47b);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding-top: 70px; /* Space for the fixed navbar */
+        }
+        .task-creation-box {
+            max-width: 1200px; /* Three times bigger */
+            padding: 60px; /* Three times bigger */
+            border: 1px solid rgba(0, 0, 255, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 255, 0.3); /* Semi-transparent blue */
+            color: white;
+        }
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-label {
+            color: white;
+        }
+        .btn-custom {
+            background-color: #4CAF50; /* Custom button color */
+            border: none;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #800080; /* Purple color on hover */
+            color: white;
+        }
+        .navbar {
+            width: 100%;
+        }
+        .urgency-low {
+            color: green;
+        }
+        .urgency-medium {
+            color: orange;
+        }
+        .urgency-high {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ToDoIt</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="task_page.html">ToDo List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="task_creation.html">New Task</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About ToDoIt</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container center-screen">
+        <div class="task-creation-box">
+            <h2 class="text-center">Create Task</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="taskName" class="form-label">Task Name*</label>
+                    <input type="text" class="form-control" id="taskName" placeholder="Enter task name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="taskDescription" class="form-label">Task Description (optional)</label>
+                    <textarea class="form-control" id="taskDescription" rows="3" placeholder="Enter task description"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="taskUrgency" class="form-label">Task Urgency</label>
+                    <select class="form-control" id="taskUrgency">
+                        <option class="urgency-low" value="low">Low</option>
+                        <option class="urgency-medium" value="medium">Medium</option>
+                        <option class="urgency-high" value="high">High</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="taskDate" class="form-label">Required Completion Date</label>
+                    <input type="date" class="form-control" id="taskDate" required>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-custom">Create Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+</html>

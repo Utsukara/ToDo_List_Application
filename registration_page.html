@@ -6,30 +6,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
+    <style>
+        body {
+            background: linear-gradient(to top, #ff7e5f, #feb47b);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding-top: 70px; /* Space for the fixed navbar */
+        }
+        .sign-up-box {
+            max-width: 1200px; /* Three times bigger */
+            padding: 60px; /* Three times bigger */
+            border: 1px solid rgba(0, 0, 255, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 255, 0.3); /* Semi-transparent blue */
+            color: white;
+        }
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-label {
+            color: white;
+        }
+        .btn-custom {
+            background-color: #4CAF50; /* Custom button color */
+            border: none;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #800080; /* Purple color on hover */
+            color: white;
+        }
+        .make-account-link {
+            color: #FFD700; /* Custom link color */
+            text-decoration: underline;
+        }
+        .make-account-link:hover {
+            color: #800080; /* Purple color on hover */
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-          </div>
+            <a class="navbar-brand" href="#">ToDoIt</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="task_page.html">ToDo List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="task_creation.html">New Task</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About ToDoIt</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </nav>
+    </nav>
+    <div class="container center-screen">
+        <div class="sign-up-box">
+            <h2 class="text-center">Sign Up</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Enter your password">
+              </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-custom">Sign Up</button>
+                </div>
+                <div class="mt-3 text-center">
+                    <span>Already have an account? <a href="#" class="text-decoration-none make-account-link">Login</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+</html>

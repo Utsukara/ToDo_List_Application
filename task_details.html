@@ -6,7 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
+    <style>
+        body {
+            background: linear-gradient(to top, #ff7e5f, #feb47b);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding-top: 70px; /* Space for the fixed navbar */
+        }
+        .task-details-box {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+        }
+        .task-title {
+            margin-bottom: 20px;
+        }
+        .task-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn-custom {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn-custom:hover {
+            background-color: #800080;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ToDoIt</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="task_page.html">ToDo List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="task_creation.html">New Task</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About ToDoIt</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="registration_page.html">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sign_in.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="task-details-box">
+        <h2 class="task-title">Task Title</h2>
+        <p>Description of the task goes here. This is a detailed description of what the task entails.</p>
+        <p><strong>Due Date:</strong> 2024-06-01</p>
+        <div class="task-buttons">
+            <a href="task_editing.html" class="btn btn-custom">Edit Task</a>
+            <button class="btn btn-custom">Complete Task</button>
+        </div>
+    </div>
 </body>
+</html>
