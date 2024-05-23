@@ -8,7 +8,7 @@
     <script src="js/bootstrap.js"></script>
     <style>
         body {
-            background: linear-gradient(to top, #ff7e5f, #feb47b);
+            background: linear-gradient(to top, rgb(44, 69, 64), rgb(0, 0, 0));
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -20,31 +20,56 @@
             max-width: 400px;
             width: 100%;
             padding: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 255, 0.3);
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(50, 109, 65, 0.9); /* Semi-transparent */
+            color: goldenrod;
         }
         .form-control {
-            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-label {
+            color: goldenrod;
         }
         .btn-custom {
-            background-color: #4CAF50;
+            background-color: purple; /* Custom button color */
             border: none;
-            color: white;
+            color: greenyellow;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             margin-top: 10px;
         }
         .btn-custom:hover {
-            background-color: #800080;
-            color: white;
+            background-color: greenyellow; /* Hover color */
+            color: purple;
+        }
+        .navbar {
+            background-color: #030202; /* Navbar background color */
+            color: #0e7e1d; /* Navbar text color */
+        }
+        .nav-link {
+            color: #0e7e1d !important; /* Navbar links text color */
+        }
+        .nav-link:hover {
+            color: #800080 !important; /* Navbar links hover color */
+        }
+        .navbar-brand {
+            background: linear-gradient(to right, #0e7e1d, #800080); /* Gradient color */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Transparent text to show gradient */
+            background-clip: text;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">ToDoIt</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

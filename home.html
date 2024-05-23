@@ -8,18 +8,49 @@
     <script src="js/bootstrap.js"></script>
     <style>
         body {
-            background: linear-gradient(to top, #ff7e5f, #feb47b);
+            background: linear-gradient(to top, rgb(44, 69, 64), rgb(0, 0, 0));
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: 0;
             padding-top: 70px; /* Space for the fixed navbar */
             overflow: hidden;
         }
+        .navbar {
+            background-color: #030202; /* Change this to adjust the navbar background color */
+            color: #0e7e1d; /* Change this to adjust the navbar text color */
+        }
+        .nav-link {
+            color: #0e7e1d !important; /* Ensure navbar links match the text color */
+        }
+        .nav-link:hover {
+            color: #800080 !important; /* Purple color on hover */
+        }
+        .navbar-brand {
+            background: linear-gradient(to right, #0e7e1d, #800080); /* Gradient color */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* This makes the text transparent so the background shows through */
+            background-clip: text;
+        }
+        .welcome-banner {
+            background: linear-gradient(145deg, rgba(15, 79, 25, 0.9), rgba(50, 150, 75, 0.9));
+            color: purple;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+            z-index: 5; /* Ensure it's above the cards */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
         .carousel-container {
             width: 100%;
-            height: calc(100vh - 70px); /* Full height minus the navbar */
+            height: calc(100vh - 150px); /* Full height minus the navbar and banner */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,9 +65,10 @@
             transform: translateX(0); /* Initial position */
         }
         .card {
-            width: 20rem;
-            height: 35rem; /* Increased height to nearly touch the header */
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+            width: 16rem;
+            height: 26rem; /* Adjusted height */
+            background-color: rgba(50, 109, 65, 1);
+            color: goldenrod;
             border-radius: 15px;
             margin: 0 10px;
             flex-shrink: 0;
@@ -46,6 +78,7 @@
             justify-content: space-between;
             padding: 10px;
             transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            cursor: pointer;
         }
         .card.center {
             transform: scale(1);
@@ -66,12 +99,19 @@
             position: absolute;
             top: 10px;
             left: 10px;
+            display: flex;
+            align-items: center;
         }
-        .card-title-upside-down {
+        .edit-task-link {
             position: absolute;
             bottom: 10px;
             right: 10px;
-            transform: rotate(180deg);
+            color: purple;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .edit-task-link:hover {
+            color: goldenrod;
         }
         .card-body {
             flex: 1;
@@ -82,13 +122,22 @@
             text-align: center;
         }
         .btn-custom {
-            background-color: #4CAF50; /* Custom button color */
+            background-color: purple; /* Purple color */
             border: none;
-            color: white;
+            color: greenyellow; /* Green color */
             margin-top: 10px;
         }
         .btn-custom:hover {
-            background-color: #800080; /* Purple color on hover */
+            background-color: greenyellow; /* Green color */
+            color: purple; /* Purple color */
+        }
+        .btn-exit {
+            background-color: #ff6347; /* Tomato red color */
+            border: none;
+            color: white;
+        }
+        .btn-exit:hover {
+            background-color: #ff4500; /* Darker tomato red color on hover */
             color: white;
         }
         .carousel-control-prev,
@@ -96,41 +145,65 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 5%;
-            height: 100%;
+            width: 50px;
+            height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            background-color: purple;
+            color: white;
+            border: none;
+            border-radius: 50%;
             z-index: 10;
         }
         .carousel-control-prev {
-            left: 0;
+            left: 10px;
         }
         .carousel-control-next {
-            right: 0;
+            right: 10px;
+        }
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background-color: greenyellow; /* Green color */
         }
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
-            background-color: blue;
-            width: 30px;
-            height: 30px;
+            background-color: white;
+            width: 20px;
+            height: 20px;
             display: inline-block;
             mask-size: contain;
             mask-repeat: no-repeat;
         }
         .carousel-control-prev-icon {
-            mask-image: url('https://via.placeholder.com/30?text=<');
+            mask-image: url('https://via.placeholder.com/20?text=<');
         }
         .carousel-control-next-icon {
-            mask-image: url('https://via.placeholder.com/30?text=>');
+            mask-image: url('https://via.placeholder.com/20?text=>');
+        }
+        .text-burnt-orange {
+            color: rgb(176, 82, 61); /* Burnt orange color */
+        }
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+        }
+        .modal-content {
+            background-color: rgba(44, 69, 64, 0.9); /* Matching the gradient background of the home screen */
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+        }
+        .modal-header, .modal-footer {
+            border: none;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">ToDoIt</a>
+            <a class="navbar-brand" href="home.html">ToDoIt</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -161,59 +234,72 @@
         </div>
     </nav>
 
+    <div class="welcome-banner">
+        Welcome to ToDoIt
+    </div>
+
     <div class="container carousel-container">
-        <div class="carousel-control-prev" onclick="prevCard()">
+        <button class="carousel-control-prev" onclick="prevCard()">
             <span class="carousel-control-prev-icon"></span>
-        </div>
+        </button>
         <div class="cards-wrapper" id="cardsWrapper">
-            <div class="card center">
+            <div class="card center" onclick="goToTaskDetails('Task 1')">
                 <h5 class="card-title">Task 1</h5>
                 <div class="card-body">
                     <p class="card-text">Description of task 1.</p>
-                    <p class="card-text"><small class="text-muted">Due Date: 2024-05-20</small></p>
-                    <button class="btn btn-custom">Complete</button>
+                    <p class="card-text text-burnt-orange"><small>Due Date: 2024-05-20</small></p>
+                    <button class="btn btn-custom" onclick="event.stopPropagation();completeTask()">Complete</button>
                 </div>
-                <h5 class="card-title card-title-upside-down">Task 1</h5>
+                <span class="edit-task-link" onclick="event.stopPropagation();location.href='task_editing.html'">Edit Task</span>
             </div>
-            <div class="card next">
+            <div class="card next" onclick="goToTaskDetails('Task 2')">
                 <h5 class="card-title">Task 2</h5>
                 <div class="card-body">
                     <p class="card-text">Description of task 2.</p>
-                    <p class="card-text"><small class="text-muted">Due Date: 2024-05-22</small></p>
-                    <button class="btn btn-custom">Complete</button>
+                    <p class="card-text text-burnt-orange"><small>Due Date: 2024-05-22</small></p>
+                    <button class="btn btn-custom" onclick="event.stopPropagation();completeTask()">Complete</button>
                 </div>
-                <h5 class="card-title card-title-upside-down">Task 2</h5>
+                <span class="edit-task-link" onclick="event.stopPropagation();location.href='task_editing.html'">Edit Task</span>
             </div>
-            <div class="card next">
+            <div class="card next" onclick="goToTaskDetails('Task 3')">
                 <h5 class="card-title">Task 3</h5>
                 <div class="card-body">
                     <p class="card-text">Description of task 3.</p>
-                    <p class="card-text"><small class="text-muted">Due Date: 2024-05-25</small></p>
-                    <button class="btn btn-custom">Complete</button>
+                    <p class="card-text text-burnt-orange"><small>Due Date: 2024-05-25</small></p>
+                    <button class="btn btn-custom" onclick="event.stopPropagation();completeTask()">Complete</button>
                 </div>
-                <h5 class="card-title card-title-upside-down">Task 3</h5>
+                <span class="edit-task-link" onclick="event.stopPropagation();location.href='task_editing.html'">Edit Task</span>
             </div>
-            <div class="card next">
+            <div class="card next" onclick="goToTaskDetails('Task 4')">
                 <h5 class="card-title">Task 4</h5>
                 <div class="card-body">
                     <p class="card-text">Description of task 4.</p>
-                    <p class="card-text"><small class="text-muted">Due Date: 2024-06-01</small></p>
-                    <button class="btn btn-custom">Complete</button>
+                    <p class="card-text text-burnt-orange"><small>Due Date: 2024-06-01</small></p>
+                    <button class="btn btn-custom" onclick="event.stopPropagation();completeTask()">Complete</button>
                 </div>
-                <h5 class="card-title card-title-upside-down">Task 4</h5>
-            </div>
-            <div class="card next">
-                <h5 class="card-title">Task 5</h5>
-                <div class="card-body">
-                    <p class="card-text">Description of task 5.</p>
-                    <p class="card-text"><small class="text-muted">Due Date: 2024-06-10</small></p>
-                    <button class="btn btn-custom">Complete</button>
-                </div>
-                <h5 class="card-title card-title-upside-down">Task 5</h5>
+                <span class="edit-task-link" onclick="event.stopPropagation();location.href='task_editing.html'">Edit Task</span>
             </div>
         </div>
-        <div class="carousel-control-next" onclick="nextCard()">
+        <button class="carousel-control-next" onclick="nextCard()">
             <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+    <div class="modal fade" id="completeTaskModal" tabindex="-1" aria-labelledby="completeTaskModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="completeTaskModalLabel">Complete Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Would you like to create an account or sign in?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom" onclick="location.href='sign_in.html'">Sign In</button>
+                    <button type="button" class="btn btn-custom" onclick="location.href='registration_page.html'">Sign Up</button>
+                    <button type="button" class="btn btn-exit" data-bs-dismiss="modal">Exit</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -248,6 +334,20 @@
         function nextCard() {
             currentIndex = (currentIndex + 1) % cards.length;
             updateCards();
+        }
+
+        function goToTaskDetails(task) {
+            if (currentIndex === Array.from(cards).indexOf(document.querySelector('.card.center'))) {
+                alert(`Navigating to details of ${task}`);
+                // Implement navigation to task details page here
+                // location.href = `task_details.html?task=${encodeURIComponent(task)}`;
+            }
+        }
+
+        function completeTask(event) {
+            event.stopPropagation(); // Prevents the card click event
+            const completeTaskModal = new bootstrap.Modal(document.getElementById('completeTaskModal'));
+            completeTaskModal.show();
         }
 
         updateCards(); // Initial call to set the correct card classes

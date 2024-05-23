@@ -8,22 +8,39 @@
     <script src="js/bootstrap.js"></script>
     <style>
         body {
-            background: linear-gradient(to top, #ff7e5f, #feb47b);
+            background: linear-gradient(to top, rgb(44, 69, 64), rgb(0, 0, 0));
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0;
-            padding-top: 70px; /* Space for the fixed navbar */
+        }
+        .navbar {
+            background-color: #030202; /* Change this to adjust the navbar background color */
+            color: #0e7e1d; /* Change this to adjust the navbar text color */
+        }
+        .nav-link {
+            color: #0e7e1d !important; /* Ensure navbar links match the text color */
+        }
+        .nav-link:hover {
+            color: #800080 !important; /* Purple color on hover */
+        }
+        .navbar-brand {
+            background: linear-gradient(to right, #0e7e1d, #800080); /* Gradient color */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* This makes the text transparent so the background shows through */
+            background-clip: text;
         }
         .task-creation-box {
-            max-width: 1200px; /* Three times bigger */
-            padding: 60px; /* Three times bigger */
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
             border: 1px solid rgba(0, 0, 255, 0.3);
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: rgba(0, 0, 255, 0.3); /* Semi-transparent blue */
+            background-color: rgba(50, 109, 65, 1); /* Semi-transparent blue */
             color: white;
+            margin: auto; /* Centering the box */
         }
         .form-control {
             background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
@@ -57,12 +74,19 @@
         .urgency-high {
             color: red;
         }
+        .center-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height */
+            padding: 20px; /* Optional: add padding for spacing */
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">ToDoIt</a>
+            <a class="navbar-brand" href="home.html">ToDoIt</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -79,6 +103,14 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About ToDoIt</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="registration_page.html">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sign_in.html">Login</a>
                     </li>
                 </ul>
             </div>
